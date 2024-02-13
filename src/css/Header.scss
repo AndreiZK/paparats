@@ -1,0 +1,168 @@
+@font-face {
+  font-family: Slavic;
+  src: url(Moscowit.otf);
+}
+
+.header-container {
+  position: sticky !important;
+  top: 0;
+  left: 0;
+  height: 120px;
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 2em;
+}
+
+.header-content {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+
+  z-index: 1;
+  @media (max-width: 768px) {
+    padding-inline: 0;
+    height: 100vh;
+    padding-top: 80px;
+    padding-right: 40px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    flex-direction: column;
+    background-color: aliceblue;
+    color: black;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: all 0.5s;
+    .header-links {
+      flex-direction: column;
+    }
+    &.checked {
+      transform: translateX(0);
+    }
+  }
+}
+
+.header-content-subcontainer {
+  display: flex;
+  gap: 2em;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.logo {
+  text-decoration: none;
+  color: aliceblue;
+  font-family: Slavic, sans-serif;
+  font-size: 2.5em;
+  //   background: url("assets/background.jpg") center;
+  //   background-clip: text;
+  //   color: transparent;
+}
+
+.header-links {
+  display: flex;
+  gap: 1em;
+  font-size: 1.5em;
+  a {
+    position: relative;
+    transition: all 0.3s;
+    text-decoration: none;
+    text-shadow: none;
+    color: aliceblue;
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   bottom: 0;
+    //   left: 0;
+    //   height: 0.1em;
+    //   width: 100%;
+    //   background-color: aliceblue;
+    //   transition: all 0.2s;
+    //   transform: scaleX(0);
+    //   transform-origin: left;
+    // }
+    &:hover {
+      transform: scale(1.1);
+    }
+    &.selected {
+      &::before {
+        transform: scaleX(1);
+      }
+      transform: scale(0.9);
+      color: #a7dca5;
+    }
+  }
+}
+
+.header-langs {
+  color: aliceblue;
+  display: flex;
+  button {
+    color: aliceblue;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-links a,
+  .header-langs button {
+    color: black;
+    text-shadow: none;
+  }
+}
+
+// MOBILE MENU
+
+.menu-button-container {
+  margin-left: auto;
+  width: 40px;
+  height: 30px;
+  overflow: hidden;
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+#menu_checkbox {
+  display: none;
+}
+
+.menu-button-container label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  cursor: pointer;
+  div {
+    z-index: 100;
+    transform-origin: 50%;
+    height: 10%;
+    width: 100%;
+    background-color: aliceblue;
+    transition: all 0.3s;
+  }
+}
+
+#menu_checkbox:checked + label div {
+  background-color: black;
+  &:first-child {
+    transform: translateY(13.5px) rotate(45deg);
+  }
+  &:nth-child(2) {
+    transform: scale(0);
+  }
+  &:last-child {
+    transform: translateY(-13.5px) rotate(-45deg);
+  }
+}
