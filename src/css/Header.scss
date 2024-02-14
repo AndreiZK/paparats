@@ -3,6 +3,11 @@
   src: url(Moscowit.otf);
 }
 
+@font-face {
+  font-family: Alterna;
+  src: url(/assets/default.ttf);
+}
+
 .header-container {
   position: sticky !important;
   top: 0;
@@ -60,7 +65,7 @@
 .logo {
   text-decoration: none;
   color: aliceblue;
-  font-family: Slavic, sans-serif;
+  font-family: Slavic, Alterna, sans-serif;
   font-size: 2.5em;
   //   background: url("assets/background.jpg") center;
   //   background-clip: text;
