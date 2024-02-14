@@ -1,14 +1,59 @@
-import React, { ReactElement, useRef } from "react";
+import React, {
+  RefObject,
+  createRef,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import "../css/MainPage.scss";
-import Accordion from "../components/Accordion";
 
 const Main = () => {
-  const testScrollRef = useRef(null);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const testScroll = () => {
-    const myRef = testScrollRef.current!;
-    myRef?.scrollIntoView({ behavior: "smooth" });
-  };
+  function debounce(func, delay) {
+    let timeoutId;
+    return function (...args) {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const nextPage = currentPage < 2 ? currentPage + 1 : 0;
+      const prevPage = currentPage > 0 ? currentPage - 1 : 2;
+
+      console.log(currentPage);
+
+      console.log(scrollY);
+
+      if (window.scrollY > window.innerHeight * currentPage) {
+        setCurrentPage(nextPage);
+        window.scrollTo({
+          top: window.innerHeight * nextPage,
+          behavior: "smooth",
+        });
+      } else if (window.scrollY < window.innerHeight * currentPage) {
+        setCurrentPage(prevPage);
+        window.scrollTo({
+          top: window.innerHeight * prevPage,
+          behavior: "smooth",
+        });
+      }
+    };
+
+    const debounceScroll = debounce(handleScroll, 400);
+
+    window.addEventListener("scroll", debounceScroll);
+
+    return () => {
+      window.removeEventListener("scroll", debounceScroll);
+    };
+  }, [currentPage]);
 
   return (
     <div className="main-page-container">
@@ -28,14 +73,14 @@ const Main = () => {
             <img src="/assets/icons/youtube.png" alt="" />
           </div>
         </div>
-        <img
+        {/* <img
+          //   onClick={() => secondPageRef.current.scrollIntoView()}
           className="arrow-down"
-          onClick={testScroll}
           src="/assets/down-chevron.png"
           alt=""
-        />
+        /> */}
       </div>
-      <div ref={testScrollRef} className="full-screen second-screen">
+      <div className="full-screen second-screen">
         <div className="second-content-container">
           <h2>НАШИ ЗАПИСИ</h2>
           <div className="main-bandcamp">
@@ -74,52 +119,6 @@ const Main = () => {
           </p>
         </div>
       </div>
-      {/* <iframe
-        frameBorder="0"
-        className="main-video"
-        src="https://www.youtube.com/embed/gFf7VVjeTpo"
-      ></iframe>
-      <div className="main-bandcamp">
-        <div className="frame-container">
-          <iframe
-            height="300px"
-            width="100%"
-            frameBorder="0"
-            className="main-bandcamp-item"
-            src="https://bandcamp.com/EmbeddedPlayer/album=3565165907/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"
-          ></iframe>
-        </div>
-        <div className="frame-container">
-          <iframe
-            height="300px"
-            width="100%"
-            frameBorder="0"
-            src="https://bandcamp.com/EmbeddedPlayer/album=2611354670/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"
-          ></iframe>
-        </div>
-      </div> */}
-      {/* <h2>О НАС</h2>
-      <div className="main-about">
-        <img className="main-about-img" src="/assets/paparats1.jpg" alt="" />
-        <p className="main-about-desc">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda
-          doloremque libero laboriosam, accusamus ipsum autem tenetur officiis
-          blanditiis omnis eveniet aliquid rerum nemo quibusdam. Consectetur
-          aperiam praesentium magnam nisi, corrupti et quia autem saepe corporis
-          atque doloremque voluptatum quas reiciendis.
-        </p>
-      </div>
-      <div className="main-accordions">
-        <Accordion title="Homo Homini">
-          <div color="white">238794327</div>
-        </Accordion>
-        <Accordion title="Homo Homini">
-          <div color="white">238794327</div>
-        </Accordion>
-        <Accordion title="Homo Homini">
-          <div color="white">238794327</div>
-        </Accordion>
-      </div> */}
     </div>
   );
 };
