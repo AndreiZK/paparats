@@ -12,13 +12,16 @@
   position: sticky !important;
   top: 0;
   left: 0;
-  height: 120px;
+  min-height: 120px;
   z-index: 100;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 2em;
+  padding-inline: 2em 3em;
+  @media (max-width: 768px) {
+    padding-inline: 1.5em;
+  }
 }
 
 .header-content {
@@ -32,10 +35,10 @@
   @media (max-width: 768px) {
     padding-inline: 0;
     height: 100vh;
-    padding-top: 80px;
+    padding-top: 100px;
     padding-right: 40px;
     padding-left: 20px;
-    padding-bottom: 20px;
+    overflow-y: hidden;
     flex-direction: column;
     background-color: aliceblue;
     color: black;
@@ -43,13 +46,14 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(100%);
+    transform-origin: right;
+    transform: scaleX(0);
     transition: all 0.5s;
     .header-links {
       flex-direction: column;
     }
     &.checked {
-      transform: translateX(0);
+      transform: scaleX(1);
     }
   }
 }
@@ -65,7 +69,7 @@
 .logo {
   text-decoration: none;
   color: aliceblue;
-  font-family: Slavic, Alterna, sans-serif;
+  font-family: Alterna, sans-serif;
   font-size: 2.5em;
   //   background: url("assets/background.jpg") center;
   //   background-clip: text;
@@ -101,7 +105,7 @@
       &::before {
         transform: scaleX(1);
       }
-      transform: scale(0.9);
+
       color: #a7dca5;
     }
   }

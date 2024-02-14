@@ -3,10 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import "../css/Header.scss";
 
 const links = [
-  { to: "/concerts", name: "Концерты" },
   { to: "/music", name: "Музыка" },
+  { to: "/about", name: "О проекте" },
+  { to: "/concerts", name: "Концерты" },
   { to: "/contacts", name: "Контакты" },
-  { to: "/news", name: "Новости" },
   { to: "/lyrics", name: "Тексты" },
 ];
 const langs = ["RU", "BY", "EN", "PL"];
@@ -45,11 +45,11 @@ const Header = () => {
               </Link>
             ))}
           </div>
-          <div className="header-langs">
+          {/* <div className="header-langs">
             {langs.map((lang) => (
               <button>{lang}</button>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

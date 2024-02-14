@@ -1,10 +1,4 @@
-import React, {
-  RefObject,
-  createRef,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 import "../css/MainPage.scss";
 
 const Main = () => {
@@ -66,11 +60,10 @@ const Main = () => {
             </p>
           </div>
           <div className="hero-links">
-            <img src="/assets/icons/instagram.png" alt="" />
-            <img src="/assets/icons/soundcloud.png" alt="" />
-            <img src="/assets/icons/youtube.png" alt="" />
-            <img src="/assets/icons/soundcloud.png" alt="" />
-            <img src="/assets/icons/youtube.png" alt="" />
+            <img src="/assets/icons/instagram.svg" alt="" />
+            <img src="/assets/icons/soundcloud.svg" alt="" />
+            <img src="/assets/icons/youtube.svg" alt="" />
+            <img src="/assets/icons/facebook.svg" alt="" />
           </div>
         </div>
         {/* <img
@@ -119,6 +112,14 @@ const Main = () => {
           </p>
         </div>
       </div>
+      {/* <div className="full-screen fourth-screen">
+        <div className="fourth-screen-container">
+          <h2>Контакты</h2>
+          <p>
+            
+          </p>
+        </div>
+      </div> */}
     </div>
   );
 };
