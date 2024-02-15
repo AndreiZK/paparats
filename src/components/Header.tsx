@@ -3,10 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import "../css/Header.scss";
 
 const links = [
-  { to: "/music", name: "Музыка" },
-  { to: "/about", name: "О проекте" },
-  { to: "/concerts", name: "Концерты" },
-  { to: "/contacts", name: "Контакты" },
+  { to: "#music", name: "Музыка" },
+  { to: "#about", name: "О проекте" },
+  { to: "#final", name: "Контакты" },
+  { to: "#final", name: "Видео" },
+  // { to: "/concerts", name: "Концерты" },
   { to: "/lyrics", name: "Тексты" },
 ];
 const langs = ["RU", "BY", "EN", "PL"];
@@ -18,9 +19,9 @@ const Header = () => {
 
   return (
     <div className="header-container">
-      <Link to="/" className="logo">
+      <a href="/#main" className="logo">
         ПАПАРАЦЬ
-      </Link>
+      </a>
       <div className="menu-button-container">
         <input
           onChange={() => setChecked(!checked)}
@@ -37,12 +38,12 @@ const Header = () => {
         <div className="header-content-subcontainer">
           <div className="header-links">
             {links.map((link) => (
-              <Link
+              <a
                 className={location.pathname === link.to ? "selected" : ""}
-                to={link.to}
+                href={link.to}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </div>
           {/* <div className="header-langs">

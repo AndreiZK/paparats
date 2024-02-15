@@ -8,6 +8,11 @@
   src: url(/assets/default.ttf);
 }
 
+@font-face {
+  font-family: Kurbanistika;
+  src: url(/assets/kurbanistika.ttf);
+}
+
 .header-container {
   position: sticky !important;
   top: 0;
@@ -21,6 +26,7 @@
   padding-inline: 2em 3em;
   @media (max-width: 768px) {
     padding-inline: 1.5em;
+    min-height: 90px;
   }
 }
 
@@ -69,7 +75,7 @@
 .logo {
   text-decoration: none;
   color: aliceblue;
-  font-family: Alterna, sans-serif;
+  font-family: Kurbanistika, sans-serif;
   font-size: 2.5em;
   //   background: url("assets/background.jpg") center;
   //   background-clip: text;
@@ -86,18 +92,6 @@
     text-decoration: none;
     text-shadow: none;
     color: aliceblue;
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   bottom: 0;
-    //   left: 0;
-    //   height: 0.1em;
-    //   width: 100%;
-    //   background-color: aliceblue;
-    //   transition: all 0.2s;
-    //   transform: scaleX(0);
-    //   transform-origin: left;
-    // }
     &:hover {
       transform: scale(1.1);
     }

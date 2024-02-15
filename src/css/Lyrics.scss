@@ -1,0 +1,39 @@
+@font-face {
+  font-family: Hollow;
+  src: url(/assets/hollow-font.ttf);
+}
+
+.lyrics-container {
+  min-height: 100vh;
+
+  margin-top: -120px;
+  background-image: url("/assets/lyrics-bg.JPG");
+  background-position: 20% 80%;
+  background-size: cover;
+  background-attachment: fixed;
+
+  padding: 180px 10%;
+
+  h2 {
+    font-family: Hollow;
+    margin: 0;
+    font-size: 3em;
+    margin-bottom: 1em;
+  }
+
+  .songs-container {
+    width: 70%;
+    padding-left: 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: -90px;
+    .songs-container {
+      width: 80%;
+      padding-left: 2em;
+    }
+  }
+}

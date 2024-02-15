@@ -12,10 +12,10 @@ const Accordion = ({ title, children }: AccordionProps) => {
   return (
     <div className="accordion-container">
       <div onClick={() => setOpen(!open)} className="accordion-btn">
-        {title}{" "}
+        <span className="accordion-title">{title}</span>
         <img
           className={`accordion-icon ${open ? "open" : ""}`}
-          src="/assets/down-chevron.png"
+          src="/assets/down-chevron.svg"
           alt=""
         />
       </div>

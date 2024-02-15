@@ -1,9 +1,10 @@
 import React from "react";
 import Accordion from "../components/Accordion";
+import "../css/Lyrics.scss";
 
 const songs = [
   {
-    title: "title",
+    title: "Дудка",
     lyrics: `В небе звёзды, под небом ветер.
 Вот старик, знает всё на свете;
 На руках из морщинок сети...
@@ -54,14 +55,46 @@ const songs = [
 
 const Lyrics = () => {
   return (
-    <>
+    <div className="lyrics-container">
       <h2>Тексты песен</h2>
-      {songs.map((song) => (
-        <Accordion title={song.title}>
-          <p>{song.lyrics}</p>
-        </Accordion>
-      ))}
-    </>
+      <div className="songs-container">
+        {songs.map((song) => (
+          <Accordion title={song.title}>
+            <p>{song.lyrics}</p>
+          </Accordion>
+        ))}
+        {songs.map((song) => (
+          <Accordion title={song.title}>
+            <p>{song.lyrics}</p>
+          </Accordion>
+        ))}
+        {songs.map((song) => (
+          <Accordion title={song.title}>
+            <p>{song.lyrics}</p>
+          </Accordion>
+        ))}
+        {songs.map((song) => (
+          <Accordion title={song.title}>
+            <p>{song.lyrics}</p>
+          </Accordion>
+        ))}
+        {songs.map((song) => (
+          <Accordion title={song.title}>
+            <p>{song.lyrics}</p>
+          </Accordion>
+        ))}
+        {songs.map((song) => (
+          <Accordion title={song.title}>
+            <p>{song.lyrics}</p>
+          </Accordion>
+        ))}
+        {songs.map((song) => (
+          <Accordion title={song.title}>
+            <p>{song.lyrics}</p>
+          </Accordion>
+        ))}
+      </div>
+    </div>
   );
 };
 
