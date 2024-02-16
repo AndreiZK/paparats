@@ -1,4 +1,3 @@
-import React from "react";
 import Accordion from "../components/Accordion";
 import "../css/Lyrics.scss";
 

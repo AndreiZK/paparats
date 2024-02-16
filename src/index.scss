@@ -3,8 +3,6 @@
   src: url(/assets/default.ttf);
 }
 
-$text-color: aliceblue;
-
 body {
   margin: 0;
   overflow-x: hidden;
@@ -12,18 +10,7 @@ body {
 
 #root {
   scroll-behavior: smooth;
-  color: $text-color;
-  // text-shadow: 0 0 5px;
+  color: white;
   width: 100vw;
-  // overflow-x: hidden;
   font-family: Alterna, sans-serif;
 }
-
-// .layout-container {
-//   min-height: 100vh;
-// }
-
-// .page-content {
-//   // flex-grow: 1;
-//   padding-inline: 10%;
-// }

@@ -14,19 +14,15 @@ const router = createBrowserRouter([
         element: <Main />,
       },
       {
-        path: "/concerts",
-        element: <Main />,
-      },
-      {
-        path: "/music",
-        element: <Main />,
-      },
-      {
         path: "/lyrics",
         element: <Lyrics />,
       },
       {
-        path: "/news",
+        path: "/artists",
+        element: <Main />,
+      },
+      {
+        path: "/side-projects",
         element: <Main />,
       },
     ],

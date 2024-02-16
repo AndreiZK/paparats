@@ -16,16 +16,43 @@ const contactsData = [
   },
 ];
 
+const heroLinksData = [
+  {
+    icon: "/assets/icons/instagram.svg",
+    href: "https://www.instagram.com/paparats.music",
+  },
+  {
+    icon: "/assets/icons/bandcamp.svg",
+    href: "https://paparats.bandcamp.com/",
+  },
+  {
+    icon: "/assets/icons/youtube.svg",
+    href: "https://www.youtube.com/@paparats",
+  },
+  {
+    icon: "/assets/icons/facebook.svg",
+    href: "http://www.facebook.com/t.soloviova.paparats",
+  },
+];
+
+const recordsData = [
+  "https://bandcamp.com/EmbeddedPlayer/album=3565165907/size=large/bgcol=#012708/linkcol=#ffffff/artwork=large/tracklist=false/transparent=true/",
+  "https://bandcamp.com/EmbeddedPlayer/album=2611354670/size=large/bgcol=#012708/linkcol=#ffffff/artwork=large/tracklist=true/transparent=true/",
+  "https://bandcamp.com/EmbeddedPlayer/album=1746652099/size=large/bgcol=#012708/linkcol=#ffffff/artwork=large/tracklist=true/transparent=true/",
+];
+
 const Main = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
-  function debounce(func, delay) {
-    let timeoutId;
-    return function (...args) {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  function debounce<T extends Function>(func: T, delay: number) {
+    let timeout: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return function (...args: any) {
+      if (timeout) {
+        clearTimeout(timeout);
       }
-      timeoutId = setTimeout(() => {
+      timeout = setTimeout(() => {
         func(...args);
       }, delay);
     };
@@ -35,10 +62,6 @@ const Main = () => {
     const handleScroll = () => {
       const nextPage = currentPage < 3 ? currentPage + 1 : 0;
       const prevPage = currentPage > 0 ? currentPage - 1 : 3;
-
-      console.log(currentPage);
-
-      console.log(scrollY);
 
       if (window.scrollY > window.innerHeight * currentPage) {
         setCurrentPage(nextPage);
@@ -55,13 +78,15 @@ const Main = () => {
       }
     };
 
-    const debounceScroll = debounce(handleScroll, 400);
+    if (window.innerWidth > 768) {
+      const debounceScroll = debounce(handleScroll, 400);
 
-    window.addEventListener("scroll", debounceScroll);
+      window.addEventListener("scroll", debounceScroll);
 
-    return () => {
-      window.removeEventListener("scroll", debounceScroll);
-    };
+      return () => {
+        window.removeEventListener("scroll", debounceScroll);
+      };
+    }
   }, [currentPage]);
 
   return (
@@ -75,58 +100,32 @@ const Main = () => {
             </p>
           </div>
           <div className="hero-links">
-            <a target="blank" href="https://www.instagram.com/paparats.music">
-              <img src="/assets/icons/instagram.svg" alt="" />
-            </a>
-            <a target="blank" href="https://soundcloud.com/tsoloviova">
-              <img src="/assets/icons/soundcloud.svg" alt="" />
-            </a>
-            <a target="blank" href="https://www.youtube.com/@paparats">
-              <img src="/assets/icons/youtube.svg" alt="" />
-            </a>
-            <a
-              target="blank"
-              href="http://www.facebook.com/t.soloviova.paparats"
-            >
-              <img src="/assets/icons/facebook.svg" alt="" />
-            </a>
+            {heroLinksData.map((i) => (
+              <a target="blank" href={i.href}>
+                <img src={i.icon} alt="" />
+              </a>
+            ))}
           </div>
         </div>
-        {/* <img
-          //   onClick={() => secondPageRef.current.scrollIntoView()}
-          className="arrow-down"
-          src="/assets/down-chevron.png"
-          alt=""
-        /> */}
       </div>
       <div id="music" className="full-screen second-screen">
         <div className="second-content-container">
           <h2>НАШИ ЗАПИСИ</h2>
           <div className="main-bandcamp">
             <span>Чтобы послушать нажмите на обложку</span>
-            <iframe
-              frameBorder="0"
-              className="main-bandcamp-item"
-              src="https://bandcamp.com/EmbeddedPlayer/album=3565165907/size=large/bgcol=#012708/linkcol=0687f5/artwork=small/transparent=true/"
-            ></iframe>
-
-            <iframe
-              frameBorder="0"
-              className="main-bandcamp-item"
-              src="https://bandcamp.com/EmbeddedPlayer/album=2611354670/size=large/bgcol=#012708/linkcol=0687f5/artwork=small/transparent=true/"
-            ></iframe>
-
-            <iframe
-              frameBorder="0"
-              className="main-bandcamp-item"
-              src="https://bandcamp.com/EmbeddedPlayer/album=1746652099/size=large/bgcol=#012708/linkcol=0687f5/artwork=small/transparent=true/"
-            ></iframe>
+            {recordsData.map((i) => (
+              <iframe
+                frameBorder="0"
+                className="main-bandcamp-item"
+                src={i}
+              ></iframe>
+            ))}
           </div>
         </div>
       </div>
       <div id="about" className="full-screen third-screen">
         <div className="third-screen-container">
-          <h2>О проекте</h2>
+          <h2>О группе</h2>
           <p>
             «Папараць» – это Татьяна Соловьёва и музыканты, которые играют с
             ней. Основу коллектива составляют Игорь Адасик (перкуссия), Павел
@@ -144,7 +143,11 @@ const Main = () => {
           <div className="video-container">
             <h2>
               Клипы и живые выступления - на нашем{" "}
-              <a href="https://www.youtube.com/@paparats" className="green">
+              <a
+                target="blank"
+                href="https://www.youtube.com/@paparats"
+                className="green"
+              >
                 YouTube канале!
               </a>
             </h2>

@@ -1,16 +1,16 @@
 @font-face {
   font-family: Hollow;
-  src: url(/assets/hollow-font.ttf);
+  src: url(/assets/fonts/hollow-font.ttf);
 }
 
 @font-face {
   font-family: Alterna;
-  src: url(/assets/default.ttf);
+  src: url(/assets/fonts/default.ttf);
 }
 
 @font-face {
   font-family: Kurbanistika;
-  src: url(/assets/kurbanistika.ttf);
+  src: url(/assets/fonts/kurbanistika.ttf);
 }
 
 .main-page-container {
@@ -56,7 +56,8 @@
 
   .fourth-screen {
     background-image: url("/assets/4-bg-hd.jpg");
-    background-position: 25% 55%;
+    background-size: 120%;
+    background-position: 100% 88%;
   }
 
   .hero-container {
@@ -100,7 +101,7 @@
   .second-content-container {
     position: absolute;
     left: 3%;
-    top: 30%;
+    top: 20%;
     display: flex;
     flex-direction: column;
     gap: 5em;
@@ -124,8 +125,8 @@
       }
 
       .main-bandcamp-item {
-        height: 200px;
-        width: 30%;
+        height: 20vw;
+        width: 20vw;
       }
       @media (max-width: 768px) {
         flex-direction: column;
@@ -219,6 +220,7 @@
 
     .fourth-screen {
       background-position: center;
+      background-size: cover;
     }
 
     .hero-container {
